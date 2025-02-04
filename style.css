@@ -1,0 +1,80 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: #01051e;
+}
+
+.game{
+    width: 980px;
+    min-width: 980px;
+    height: 630px;
+    min-height: 630px;
+    overflow: hidden;
+    background-image: url("img/map.png");
+    background-position: center center;
+    background-size: cover;
+    position: relative;
+}
+
+.nav{
+    width: 100%;
+    height: 68px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    bottom: 16px;
+}
+
+.space1{
+    background-image: url("img/space1.png");
+    width: 4px;
+    height: 100%;
+}
+.listfriends{
+    background-image: url("img/listfriends.png");
+    width: 536px;
+    height: 100%;
+}
+.chat{
+    background-image: url("img/chat.png");
+    width: 76px;
+    height: 100%;
+}
+.btn{
+    background-image: url("img/btn.png");
+    width: 206px;
+    height: 100%;
+}
+.post{
+    background-image: url("img/post.png");
+    width: 72px;
+    height: 100%;
+}
+.stat{
+    background-image: url("img/stat.png");
+    width: 73px;
+    height: 100%;
+}
+.space2{
+    background-image: url("img/space2.png");
+    width: 13px;
+    height: 100%;
+}
+
+#character {
+    position: absolute;
+    transition: transform 1s ease-in-out;
+    width: 21px;
+    height: 69px;
+    margin: -69px 0 0 -10px;
+}
