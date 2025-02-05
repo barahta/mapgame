@@ -1,8 +1,32 @@
-*{
-    margin: 0px;
-    padding: 0px;
+@font-face {
+    font-family: 'Mont';
+    src: url('./font/Mont-Regular.woff') format('woff'),
+    url('./font/Mont-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Mont';
+    src: url('./font/Mont-Bold.woff') format('woff'),
+    url('./font/Mont-Bold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Mont';
+    src: url('./font/Mont-Black.woff') format('woff'),
+    url('./font/Mont-Black.ttf') format('truetype');
+    font-weight: 800;
+    font-style: normal;
 }
 
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Mont', sans-serif;
+    font-weight: 400;
+    font-optical-sizing: auto;
+}
 body{
     display: flex;
     justify-content: center;
@@ -22,8 +46,9 @@ body{
     background-position: center center;
     background-size: cover;
     position: relative;
+    z-index: 0;
 }
-
+/*      Н-А-В-И-Г-А-Ц-И-Я      */
 .nav{
     width: 100%;
     height: 68px;
@@ -33,18 +58,93 @@ body{
     position: absolute;
     left: 0;
     bottom: 16px;
+    z-index: 0;
 }
 
 .space1{
     background-image: url("img/space1.png");
     width: 4px;
     height: 100%;
+    z-index: 0;
 }
 .listfriends{
     background-image: url("img/listfriends.png");
     width: 536px;
     height: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 0;
 }
+.listfriends_btn{
+    width: 32px;
+    height: 100%;
+    cursor: pointer;
+    /*background-color: rgba(0,0,0,0.5);*/
+}
+.listfriends_list{
+    width: calc(100% - 30px * 2);
+    height: 100%;
+    /*background-color: rgba(255,255,255,0.5);*/
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2px;
+}
+
+.listfriends_list_iam{
+    background-image: url("img/noavatar.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 50px;
+    height: 51px;
+    position: relative;
+    border-radius: 7px;
+    margin-left: 0px;
+}
+
+.listfriends_list_iam_plusava{
+    background-image: url("img/plus_icon.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 23px;
+    height: 22px;
+    position: absolute;
+    right: -3px;
+    top: -3px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.listfriends_list_iam_plusava:hover{
+    box-shadow: 2px 2px 3px rgba(0,0,0,0.5);
+    transition: 0.2s;
+}
+
+.listfriends_list_all{
+    width: calc(536px - 60px - 64px);
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: hidden;
+}
+.listfriends_list_all_user{
+    background-image: url("img/noavatar.png");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 50px;
+    min-width: 50px;
+    height: 51px;
+    min-height: 51px;
+    border-radius: 7px;
+    margin-right: 10px;
+}
+
 .chat{
     background-image: url("img/chat.png");
     width: 76px;
@@ -54,6 +154,7 @@ body{
     background-image: url("img/btn.png");
     width: 206px;
     height: 100%;
+    cursor: pointer;
 }
 .post{
     background-image: url("img/post.png");
@@ -64,6 +165,7 @@ body{
     background-image: url("img/stat.png");
     width: 73px;
     height: 100%;
+    cursor: pointer;
 }
 .space2{
     background-image: url("img/space2.png");
@@ -71,10 +173,229 @@ body{
     height: 100%;
 }
 
+/*      ПЕРСОНАЖ      */
 #character {
     position: absolute;
     transition: transform 1s ease-in-out;
     width: 21px;
     height: 69px;
     margin: -69px 0 0 -10px;
+}
+
+/*      М-О-Д-А-Л-Ь-Н-О-Е   О-К-Н-О      */
+.modalwin{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 10;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.modalblock{
+    width: 523px;
+    height: 455px;
+    background-image: url("modalwin/img/modalfrom.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    animation: upLoad 0.8s ease-out forwards;
+}
+
+@keyframes upLoad {
+    0% {
+        transform: translateY(-70px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.exit_btn{
+    width: 26px;
+    height: 26px;
+    background-image: url("modalwin/img/close_blue.png");
+    position: absolute;
+    top: 13px;
+    right: 14px;
+    cursor: pointer;
+}
+
+.modalblock_title{
+    width: 264px;
+    height: 33px;
+    background-image: url("modalwin/img/maintitle.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    margin-top: -12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(255,255,255,1);
+    font-weight: 600;
+    font-size: 18pt;
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.3);
+}
+
+.modalblock_listform{
+    width: 404px;
+    height: 260px;
+    position: relative;
+    margin-bottom: 32px;
+    background-image: url("modalwin/img/listform.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    padding: 32px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modalblock_listform_title{
+    width: 403px;
+    height: 29px;
+    background-image: url("modalwin/img/listtitle.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #FFF;
+    font-weight: 600;
+    font-size: 10pt;
+}
+
+.modalblock_l_t_num{
+    width: 66px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modalblock_l_t_space{
+    width: 28px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modalblock_l_t_name{
+    width: 227px;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 5px;
+}
+.modalblock_l_t_experience{
+    width: calc(100% - 66px - 28px - 232px - 3px);
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 3px;
+}
+
+.modalblock_listform_list{
+    width: 412px;
+    height: 231px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin-left: 10px;
+
+    padding-right: 2px;
+}
+
+.modalblock_listform_list::-webkit-scrollbar {
+    width: 8px; /* Ширина скроллбара */
+    border-radius: 4px; /* Закругление скроллбара */
+}
+
+.modalblock_listform_list::-webkit-scrollbar-track {
+    background: #3ea1b9; /* Цвет фона скроллбара */
+    border-radius: 4px; /* Закругление фона */
+}
+
+.modalblock_listform_list::-webkit-scrollbar-thumb {
+    background: #378ea3; /* Цвет ползунка */
+    width: 6px; /* Ширина ползунка */
+    border-radius: 3px; /* Закругление ползунка */
+}
+
+.modalblock_listform_list {
+    scrollbar-width: thin; /* Для Firefox */
+    scrollbar-color: #378ea3 #3ea1b9; /* Цвет ползунка и трека */
+}
+
+.modalblock_listform_list_user{
+    width: 403px;
+    min-width: 403px;
+    height: 29px;
+    min-height: 29px;
+    margin-top: 4px;
+    background-image: url("modalwin/img/lineback.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #FFF;
+    font-weight: 600;
+}
+
+.modalblock_l_l_user_num{
+    width: 66px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modalblock_l_l_user_space{
+    width: 28px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modalblock_l_l_user_name{
+    width: 227px;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 5px;
+}
+.modalblock_l_l_user_experience{
+    width: calc(100% - 66px - 28px - 232px - 3px);
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 3px;
 }
